@@ -1,8 +1,5 @@
 package com.spring.sample.test;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -12,6 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.spring.sample.SampleRestController;
 
@@ -20,33 +19,27 @@ import com.spring.sample.SampleRestController;
 public class SampleRestControllerTestVersion1 {
 
 	@Autowired
-	private MockMvc  mockMvc;
-	
-	
-	
+	private MockMvc mockMvc;
+
 	/**
 	 * Test json response using skyscremer JSONAssert
+	 * 
 	 * @throws Exception
 	 */
 	@Test
-	public void testGetAllSamples() throws Exception{
-
-		MvcResult andReturn = mockMvc.perform(get("/api/sample").accept(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk())
-				.andReturn();
-		
+	public void testGetAllSamples2() throws Exception {
+		MvcResult andReturn = mockMvc
+				.perform(MockMvcRequestBuilders.get("/api/sample").accept(MediaType.APPLICATION_JSON))
+				.andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 		String expectedJson = "{'id':'123','name':'rahul','city':'gurgaon'}";
-		
 		String jsonResponse = andReturn.getResponse().getContentAsString();
 		JSONAssert.assertEquals(expectedJson, jsonResponse, true);
-	
 	}
-	
+
 	// test using hemcrest json
-	
-	// test @Autowired 
-	
+
+	// test @Autowired
+
 	// test @Value
-	
-	
+
 }
