@@ -1,5 +1,7 @@
 package com.spring.sample;
 
+import java.util.List;
+
 public class SampleDTO {
 
 	private String name;
@@ -7,6 +9,8 @@ public class SampleDTO {
 	private String id;
 	
 	private String city;
+	
+	private List<String> projects;
 
 	public SampleDTO(){
 		
@@ -46,6 +50,14 @@ public class SampleDTO {
 
 	public void setCity(String city) {
 		this.city = city;
+	}
+
+	public List<String> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List<String> projects) {
+		this.projects = projects;
 	}
 	
 	

@@ -1,5 +1,7 @@
 package com.spring.sample;
 
+import java.util.Arrays;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +14,11 @@ public class SampleRestController {
 
 	@RequestMapping(value="/sample", method=RequestMethod.GET)
 	public ResponseEntity<?> getSamples(){
-		return ResponseEntity.status(HttpStatus.OK).body(new SampleDTO("rahul","123","gurgaon"));
+		SampleDTO dto =  new SampleDTO();
+		dto.setCity("gurgaon");
+		dto.setId("123");
+		dto.setName("rahul");
+		dto.setProjects(Arrays.asList("ug","ng"));
+		return ResponseEntity.status(HttpStatus.OK).body(dto);
 	}
 }
